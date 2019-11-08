@@ -2,4 +2,5 @@ h1 User
 ul
     each user in users
         li= user.name
+        a(href='/users/' + user.id) View
 a(href="/users/create") Create
