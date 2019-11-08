@@ -1,6 +1,12 @@
-h1 Create
-form(action="/users/create", method="POST")
-    label Name
-    input(type="text" name="name")
-
-    button Create
+extends ./layout.pug
+block content
+    h1 Create
+    form(action="/users/create", method="POST")
+        .form-group
+            label(for='exampleInputEmail1') Name
+            input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp' placeholder='Enter name')
+            small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+        .form-group
+            label(for='exampleInputPassword1') Phone
+            input#exampleInputPassword1.form-control(type='text' placeholder='Phone number')
+        button.btn.btn-primary(type='submit') Submit

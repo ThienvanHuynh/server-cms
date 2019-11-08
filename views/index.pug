@@ -1,7 +1,6 @@
 extends ../views/users/layout.pug
 block content
+    h1 Welcome to website!
+    p Name: #{name}
 
-    a(href="/users/create") Create
-    h1 Name: #{name}
-
-    a(href="/users") User List
+    a(href="/users/create") Create User
