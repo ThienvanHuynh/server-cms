@@ -1,9 +1,22 @@
 extends ./layout.pug
 block content
 
-    h1 User
-    ul
-        each user in users
-            li= user.name
-            a(href='/users/' + user.id) View
-    a(href="/users/create") Create
+    a.btn.btn-danger.mt-3(href="/users/create" role='button') Create
+    br
+    table.table.mt-3
+        thead
+            tr
+            th(scope='col') #
+            th(scope='col') Tên
+            th(scope='col') Số điện thoại
+            th(scope='col') Chức năng
+        tbody
+            each user,index in users
+                tr
+                th(scope='row')= index+1
+                td= user.name
+                td= user.id
+                td 
+                    a.btn.btn-primary(href='/users/' + user.id role='button') View
+    
+
