@@ -1,22 +1,33 @@
 extends ./layout.pug
 block content
-
-    a.btn.btn-danger.mt-3(href="/users/create" role='button') Create
+    .container
+        .row.mt-3
+            .col.d-flex.justify-content-start
+                a.btn.btn-danger(href="/users/create" role='button') Create
+            .col.d-flex.justify-content-start
+                form.form-inline.my-2.my-lg-0(action="/users/search", method="GET")
+                    input.form-control.mr-sm-2(type="text" name="name", placeholder='Search', aria-label='Search')
+                    button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
     br
-    table.table.mt-3
-        thead
-            tr
-            th(scope='col') #
-            th(scope='col') Tên
-            th(scope='col') Số điện thoại
-            th(scope='col') Chức năng
-        tbody
-            each user,index in users
+    if users.length
+        table.table.mt-3
+            thead
                 tr
-                th(scope='row')= index+1
-                td= user.name
-                td= user.id
-                td 
-                    a.btn.btn-primary(href='/users/' + user.id role='button') View
+                th(scope='col') #
+                th(scope='col') Tên
+                th(scope='col') Số điện thoại
+                th(scope='col') Chức năng
+            tbody
+            
+                each user,index in users
+                    tr
+                    th(scope='row')= index+1
+                    td= user.name
+                    td= user.phone
+                    td 
+                        a.btn.btn-primary(href='/users/' + user.id role='button') View
+                        a.btn.btn-danger.ml-3(href=`/users/${user.id}` role='button') Delete
+    else
+            h3 Không có dữ liệu 
     
 

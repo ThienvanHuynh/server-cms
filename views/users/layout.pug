@@ -2,17 +2,20 @@ html
     head
         title My Site - NodeJS
         link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+        link(rel='stylesheet' href='../styles/styles.css')
     body
         .container-fluid
             nav.navbar.navbar-expand-lg.navbar-light.bg-light
-                a.navbar-brand(href='#') W-Itachi
+                a.navbar-brand(href='/') W-Itachi
                 button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarNavAltMarkup.collapse.navbar-collapse
-                    .navbar-nav
-                    a.nav-item.nav-link.active(href='/')
-                        | Home 
-                        span.sr-only (current)
-                    a.nav-item.nav-link(href='/users') Users
-
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.active(href='/')
+                                | Home 
+                                span.sr-only (current)
+                        li.nav-item
+                            a.nav-link(href='/users') Users
+                
             block content

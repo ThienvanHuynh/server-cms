@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-var bodyParser = require("body-parser");
 var Userrouter = require("./views/router/user.router");
+var authrouter = require("./views/router/auth.router");
 const port = 3003;
+var bodyParser = require("body-parser");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("views"));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -20,5 +23,6 @@ app.get("/", (req, res) =>
   })
 );
 app.use("/users", Userrouter);
+app.use("/auth", authrouter);
 
 app.listen(port, () => console.log(`Hvt ${port}`));

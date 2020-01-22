@@ -1,31 +1,32 @@
 {
   "users": [
     {
+      "name": "Duong Duc Tran",
+      "phone": "0943485156",
+      "id": "2c8VrMGK",
+      "email": "hvanthien1812@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "Thiện Huỳnh Văn",
+      "phone": "0943485166",
+      "id": "98quaEAE"
+    },
+    {
+      "name": "Test",
+      "phone": "123456",
+      "id": "kqQtIYtf"
+    },
+    {
       "name": "Tin tức trong khu đô thị",
-      "id": "RX6PiqRG"
-    },
-    {
-      "name": "Tin tức",
-      "id": "hl7E4sP3"
-    },
-    {
-      "name": "Danh mục danh bạ",
-      "id": "7gMx0vSl"
-    },
-    {
-      "name": "Tin tức trong khu đô thị",
-      "id": "kjhLqWpQ"
-    },
-    {
-      "name": "123",
-      "id": "T-SCFciv"
+      "phone": "0943485156",
+      "id": "4gvFxDn0"
     },
     {
       "name": "Test_12344552423",
-      "id": "w1c4dqAZ"
-    },
-    {
-      "id": "0-pzAIDF"
+      "phone": "0943485166",
+      "id": "crk-V2Nk"
     }
-  ]
+  ],
+  "errors": []
 }
