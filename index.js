@@ -1,9 +1,15 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 var Userrouter = require("./views/router/user.router");
 var authrouter = require("./views/router/auth.router");
 const port = 3003;
 var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+
+var db = require("./views/db");
+var controller = require("./views/controller/user.controller");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,16 +18,12 @@ app.use(express.static("views"));
 
 // parse application/json
 app.use(bodyParser.json());
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-app.get("/", (req, res) =>
-  res.render("index", {
-    name: "Huỳnh Văn Thiện",
-    age: 20
-  })
-);
+app.get("/", (req, res) => res.render("index"));
 app.use("/users", Userrouter);
 app.use("/auth", authrouter);
 

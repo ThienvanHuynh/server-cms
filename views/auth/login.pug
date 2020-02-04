@@ -5,8 +5,8 @@ html
         link(rel='stylesheet' href='../styles/styles.css')
     body
         .container
-            form.form-signin(method="POST")
-                h1.h3.mb-3.font-weight-normal Login
+            form.form-signin(method="POST", href="/auth/login")
+                h1.h3.mb-3.font-weight-normal.text-center Login
                 if errors
                     each error in errors
                         .alert.alert-danger=error
@@ -22,4 +22,6 @@ html
                     input(type='checkbox', value='remember-me')
                     |  Remember me
                 button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
-                p.mt-5.mb-3.text-muted Coppy right @hvt
+                a.btn.btn-lg.btn-secondary.btn-block(href='/auth/register' role='button') Register
+                a.btn.btn-lg.btn-block(href='/' role='button') Home
+                p.mt-5.mb-3.text-muted.text-center Coppy right @hvt

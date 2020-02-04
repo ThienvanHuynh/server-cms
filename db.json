@@ -3,29 +3,20 @@
     {
       "name": "Duong Duc Tran",
       "phone": "0943485156",
-      "id": "2c8VrMGK",
-      "email": "hvanthien1812@gmail.com",
-      "password": "123456"
-    },
-    {
-      "name": "Thiện Huỳnh Văn",
-      "phone": "0943485166",
-      "id": "98quaEAE"
-    },
-    {
-      "name": "Test",
-      "phone": "123456",
-      "id": "kqQtIYtf"
+      "id": "2c8VrMGK"
     },
     {
       "name": "Tin tức trong khu đô thị",
       "phone": "0943485156",
-      "id": "4gvFxDn0"
-    },
+      "id": "RZQhdhDw"
+    }
+  ],
+  "accounts": [
     {
-      "name": "Test_12344552423",
-      "phone": "0943485166",
-      "id": "crk-V2Nk"
+      "name": "Huỳnh Văn Thiện",
+      "email": "hvanthien1812@gmail.com",
+      "password": "123456",
+      "id": "LkA2u7LE"
     }
   ],
   "errors": []

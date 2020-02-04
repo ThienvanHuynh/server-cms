@@ -1,0 +1,30 @@
+html
+    head
+        title My Site - NodeJS
+        link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+        link(rel='stylesheet' href='../styles/styles.css')
+    body
+        .container
+            form.form-signin(method="POST", href="/auth/register")
+                h1.h3.mb-3.font-weight-normal.text-center Register
+                if error
+                    .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+                        strong=error
+                    br
+                if success
+                    .alert.alert-success.alert-dismissible.fade.show(role='alert')
+                        strong=success
+                    brs
+                if !success
+                    label.sr-only(for='inputEmail') Name
+                    input#inputEmail.form-control(type='text',name='name' placeholder='Full name', required='', autofocus='')
+                    br
+                    label.sr-only(for='inputEmail') Email address
+                    input#inputEmail.form-control(type='email',name='email' placeholder='Email address', required='', autofocus='')
+                    br
+                    label.sr-only(for='inputPassword') Password
+                    input#inputPassword.form-control(type='password', name='password' placeholder='Password', required='')
+                    br
+                    button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
+                a.btn.btn-lg.btn-block(href='/auth/login' role='button') Login Now!
+                p.mt-5.mb-3.text-muted.text-center Coppy right @hvt

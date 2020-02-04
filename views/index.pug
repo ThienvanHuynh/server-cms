@@ -1,6 +1,5 @@
 extends ../views/users/layout.pug
 block content
     h1 Welcome to website!
-    p Name: #{name}
-
-    a(href="/users/create") Create User
+    if !user
+        a(href="/auth/register") Register Account
