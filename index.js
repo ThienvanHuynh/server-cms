@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 var Userrouter = require("./views/router/user.router");
 var authrouter = require("./views/router/auth.router");
-const port = 3003;
+const port = 3004;
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 

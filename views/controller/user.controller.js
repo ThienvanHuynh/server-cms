@@ -13,10 +13,21 @@ module.exports.search = (req, res) => {
     users: result
   });
 };
-module.exports.user = (req, res) =>
-  res.render("users/index", {
-    users: db.get("users").value()
+module.exports.user = (req, res) => {
+  var page = parseInt(req.query.page) || 1;
+  var perPage = 10;
+  var start = (page - 1) * perPage;
+  var end = page * perPage;
+
+  const data = db
+    .get("users")
+    .value()
+    .slice(start, end);
+  return res.render("users/index", {
+    users: data,
+    total: data.length / 10
   });
+};
 
 module.exports.index;
 module.exports.create = (req, res) => {
