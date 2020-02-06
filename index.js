@@ -8,13 +8,11 @@ const port = 3004;
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 
-var db = require("./views/db");
-var controller = require("./views/controller/user.controller");
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("views"));
+app.use(express.static("public"));
 
 // parse application/json
 app.use(bodyParser.json());

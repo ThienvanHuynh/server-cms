@@ -5,7 +5,7 @@ html
         link(rel='stylesheet' href='../styles/styles.css')
     body
         .container
-            form.form-signin(method="POST", href="/auth/register")
+            form.form-signin(method="POST", href="/auth/register" enctype="multipart/form-data")
                 h1.h3.mb-3.font-weight-normal.text-center Register
                 if error
                     .alert.alert-warning.alert-dismissible.fade.show(role='alert')
@@ -25,6 +25,10 @@ html
                     label.sr-only(for='inputPassword') Password
                     input#inputPassword.form-control(type='password', name='password' placeholder='Password', required='')
                     br
+                    label.sr-only(for='inputAvatar') Avatar
+                    input#inputAvatar.form-control(type='file', name='avatar')
+                    br
+                    
                     button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
                 a.btn.btn-lg.btn-block(href='/auth/login' role='button') Login Now!
                 p.mt-5.mb-3.text-muted.text-center Coppy right @hvt

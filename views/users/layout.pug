@@ -19,4 +19,5 @@ html
                             a.nav-link(href='/users') Users
                 if user
                     p Hi #{user.name}!
+                    img.avatar.img-thumbnail(src=user.avatar alt='test')
             block content

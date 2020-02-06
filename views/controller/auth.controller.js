@@ -41,8 +41,15 @@ module.exports.register = (req, res) => {
 module.exports.postRegister = (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-
+  var url = req.file.path;
   req.body.id = shortid.generate();
+  req.body.avatar =
+    "/" +
+    url
+      .split("\\")
+      .slice(1)
+      .join("/");
+
   var account = db
     .get("accounts")
     .find({ email: email })

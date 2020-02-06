@@ -603,10 +603,11 @@
   ],
   "accounts": [
     {
-      "name": "Huỳnh Văn Thiện",
+      "name": "Tin tức trong khu đô thị",
       "email": "hvanthien1812@gmail.com",
       "password": "123456",
-      "id": "LkA2u7LE"
+      "id": "IrebqxJF",
+      "avatar": "/uploads/2bba0e661ada386eb03a8388580de8cb"
     }
   ],
   "errors": []
