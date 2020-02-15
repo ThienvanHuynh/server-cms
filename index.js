@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+var mongoose = require("mongoose");
+mongoose.connect(process.env.MONGO_URL);
+
 const express = require("express");
 const app = express();
 var Userrouter = require("./views/router/user.router");

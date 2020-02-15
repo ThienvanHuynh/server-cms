@@ -1,4 +1,5 @@
 var db = require("../db");
+var Accounts = require("../model/auth.model");
 const shortid = require("shortid");
 module.exports.login = (req, res) => {
   res.render("auth/login");
@@ -50,24 +51,26 @@ module.exports.postRegister = (req, res) => {
       .slice(1)
       .join("/");
 
-  var account = db
-    .get("accounts")
-    .find({ email: email })
-    .value();
-  console.log(account);
-  if (account) {
-    res.render("auth/register", {
-      error: "Tài khoản đã tồn tại",
-      values: req.body
+  try {
+    const newUser = new Accounts(req.body);
+    Accounts.find({ email: email }).exec(function(err, docs) {
+      if (docs.length > 0) {
+        res.render("auth/register", {
+          error: "Tài khoản đã tồn tại",
+          values: req.body
+        });
+        return;
+      } else {
+        newUser.save(function(err) {
+          if (err) return handleError(err);
+          res.render("auth/register", {
+            success: "Đăng kí thành công!",
+            values: req.body
+          });
+        });
+      }
     });
-    return;
-  } else {
-    db.get("accounts")
-      .push(req.body)
-      .write();
-    res.render("auth/register", {
-      success: "Đăng kí thành công!",
-      values: req.body
-    });
+  } catch (error) {
+    next(error);
   }
 };

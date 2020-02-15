@@ -1,4 +1,5 @@
 var db = require("../db");
+var User = require("../model/users.model");
 const shortid = require("shortid");
 
 module.exports.search = (req, res) => {
@@ -14,18 +15,23 @@ module.exports.search = (req, res) => {
   });
 };
 module.exports.user = (req, res) => {
-  var page = parseInt(req.query.page) || 1;
-  var perPage = 10;
-  var start = (page - 1) * perPage;
-  var end = page * perPage;
+  // var page = parseInt(req.query.page) || 1;
+  // var perPage = 10;
+  // var start = (page - 1) * perPage;
+  // var end = page * perPage;
+  // const data = db
+  //   .get("users")
+  //   .value()
+  //   .slice(start, end);
+  // return res.render("users/index", {
+  //   users: data,
+  //   total: data.length / 10
+  // });
 
-  const data = db
-    .get("users")
-    .value()
-    .slice(start, end);
-  return res.render("users/index", {
-    users: data,
-    total: data.length / 10
+  User.find().then(function(users) {
+    res.render("users/index", {
+      users: users
+    });
   });
 };
 
