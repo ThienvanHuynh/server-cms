@@ -1,4 +1,4 @@
-var db = require("../db");
+var db = require("../../src/db");
 var Accounts = require("../model/auth.model");
 const shortid = require("shortid");
 module.exports.login = (req, res) => {

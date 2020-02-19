@@ -1,4 +1,4 @@
-var db = require("../db");
+var db = require("../../src/db");
 
 module.exports.requireAuth = function(req, res, next) {
   if (!req.signedCookies.userid) {

@@ -1,5 +1,5 @@
 var db = require("../db");
-var User = require("../model/users.model");
+var User = require("../model/user.model");
 const shortid = require("shortid");
 
 module.exports.search = (req, res) => {
