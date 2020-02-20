@@ -26,8 +26,8 @@ block content
                     td= user.email
                     td= user.phone
                     td 
-                        a.btn.btn-primary(href='users/view/detail/' + user.id role='button') View
-                        a.btn.btn-danger.ml-3(href=`/users/${user.id}` role='button') Delete
+                        a.btn.btn-primary(href='/users/view/detail/' + user.id role='button') View
+                        a.btn.btn-danger.ml-3(href='/users/view/delete/' + user.id role='button') Delete
         if total               
             nav(aria-label='Page navigation example')
                 ul.pagination

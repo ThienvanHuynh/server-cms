@@ -23,7 +23,7 @@ module.exports.user = (req, res) => {
 };
 
 module.exports.index;
-module.exports.create = (req, res) => {
+module.exports.create = (req, res, next) => {
   req.body.id = shortid.generate();
   try {
     const newUser = new User(req.body);
@@ -41,7 +41,8 @@ module.exports.getCreate = (req, res) => {
   res.render("user/create");
 };
 
-module.exports.GETeditUser = (req, res) => {
+module.exports.GETeditUser = (req, res, next) => {
+  console.log("----------->");
   const id = req.params.id;
   try {
     const data = User.findOne({ _id: id });
@@ -60,23 +61,19 @@ module.exports.GETeditUser = (req, res) => {
   }
 };
 
-module.exports.PUTeditUser = (req, res) => {
-  console.log("helllo");
+module.exports.PUTeditUser = async (req, res, next) => {
   const id = req.params.id;
-  console.log("body:", body);
   try {
-    const data = User.f;
-    User.findByIdAndUpdate(id, data, function(res) {
-      console.log("resssssss:", res);
-    });
+    const data = req.body;
+    await User.findByIdAndUpdate({ _id: id }, data);
+    res.redirect("/users");
   } catch (err) {
     next(err);
   }
 };
 
-module.exports.detail = (req, res) => {
+module.exports.detail = (req, res, next) => {
   const id = req.params.id;
-
   try {
     const data = User.findOne({ _id: id });
     data.exec(function(err, user) {
