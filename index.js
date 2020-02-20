@@ -13,12 +13,14 @@ var authrouter = require("./auth/router/auth.router");
 const port = 3880;
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
+var path = require("path");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("src"));
-app.use(express.static("public"));
+app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/styles", express.static(path.join(__dirname, "public/styles")));
 
 // parse application/json
 app.use(bodyParser.json());

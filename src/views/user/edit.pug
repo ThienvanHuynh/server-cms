@@ -1,0 +1,17 @@
+extends ./header.pug
+block content
+    h1 Edit
+    .container
+        form.center(action=`/users/view/edit/${user.id}`, method="PUT")
+            .form-create
+                .form-group
+                label(for='name') Name
+                input#name.form-control(type='text' aria-describedby='emailHelp' placeholder='Enter name' name="name" value=user?user.name: '')
+            .form-group
+                label(for='email') Email
+                input#email.form-control(type='text' aria-describedby='emailHelp' placeholder='Enter email' name="email" value= user? user.email : '')
+                small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
+            .form-group
+                label(for='phone') Phone
+                input#phone.form-control(type='text' placeholder='Phone number' name="phone" value=user ? user.phone : '')
+                button.btn.btn-primary.center.mt-3(type='submit') Submit

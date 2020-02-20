@@ -1,4 +1,3 @@
-var db = require("../db");
 var User = require("../model/user.model");
 const shortid = require("shortid");
 
@@ -14,22 +13,10 @@ module.exports.search = (req, res) => {
     users: result
   });
 };
-module.exports.user = (req, res) => {
-  // var page = parseInt(req.query.page) || 1;
-  // var perPage = 10;
-  // var start = (page - 1) * perPage;
-  // var end = page * perPage;
-  // const data = db
-  //   .get("users")
-  //   .value()
-  //   .slice(start, end);
-  // return res.render("users/index", {
-  //   users: data,
-  //   total: data.length / 10
-  // });
 
+module.exports.user = (req, res) => {
   User.find().then(function(users) {
-    res.render("users/index", {
+    res.render("user/index", {
       users: users
     });
   });
@@ -38,21 +25,71 @@ module.exports.user = (req, res) => {
 module.exports.index;
 module.exports.create = (req, res) => {
   req.body.id = shortid.generate();
-  db.get("users")
-    .push(req.body)
-    .write();
+  try {
+    const newUser = new User(req.body);
+    newUser.save(function(err) {
+      if (err) {
+        alert("Create user failed!");
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
   res.redirect("/users");
 };
 module.exports.getCreate = (req, res) => {
-  res.render("users/create");
+  res.render("user/create");
 };
+
+module.exports.GETeditUser = (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = User.findOne({ _id: id });
+    data.exec(function(err, user) {
+      if (!user) {
+        alert("user not exis");
+        return;
+      } else {
+        res.render("user/edit", {
+          user: user
+        });
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.PUTeditUser = (req, res) => {
+  console.log("helllo");
+  const id = req.params.id;
+  console.log("body:", body);
+  try {
+    const data = User.f;
+    User.findByIdAndUpdate(id, data, function(res) {
+      console.log("resssssss:", res);
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports.detail = (req, res) => {
   const id = req.params.id;
-  const users = db
-    .get("users")
-    .find({ id: id })
-    .value();
-  res.render("users/view", {
-    user: users
-  });
+
+  try {
+    const data = User.findOne({ _id: id });
+    data.exec(function(err, user) {
+      if (!user) {
+        alert("user not exis");
+        return;
+      } else {
+        res.render("user/detail", {
+          user: user
+        });
+      }
+    });
+  } catch (err) {
+    next(err);
+  }
 };

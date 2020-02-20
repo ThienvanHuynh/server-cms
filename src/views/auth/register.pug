@@ -2,33 +2,34 @@ html
     head
         title My Site - NodeJS
         link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
-        link(rel='stylesheet' href='../styles/styles.css')
+        link(rel='stylesheet' href='../styles/index.css')
     body
-        .container
-            form.form-signin(method="POST", href="/auth/register" enctype="multipart/form-data")
-                h1.h3.mb-3.font-weight-normal.text-center Register
-                if error
-                    .alert.alert-warning.alert-dismissible.fade.show(role='alert')
-                        strong=error
-                    br
-                if success
-                    .alert.alert-success.alert-dismissible.fade.show(role='alert')
-                        strong=success
-                    brs
-                if !success
-                    label.sr-only(for='inputEmail') Name
-                    input#inputEmail.form-control(type='text',name='name' placeholder='Full name', required='', autofocus='')
-                    br
-                    label.sr-only(for='inputEmail') Email address
-                    input#inputEmail.form-control(type='email',name='email' placeholder='Email address', required='', autofocus='')
-                    br
-                    label.sr-only(for='inputPassword') Password
-                    input#inputPassword.form-control(type='password', name='password' placeholder='Password', required='')
-                    br
-                    label.sr-only(for='inputAvatar') Avatar
-                    input#inputAvatar.form-control(type='file', name='avatar')
-                    br
-                    
-                    button.btn.btn-lg.btn-primary.btn-block(type='submit') Submit
-                a.btn.btn-lg.btn-block(href='/auth/login' role='button') Login Now!
-                p.mt-5.mb-3.text-muted.text-center Coppy right @hvt
+        .images-cover-login
+            form.form-custom.center(method="POST", href="/auth/register" enctype="multipart/form-data")
+                .form-signin
+                    h1.h3.mb-3.font-weight-normal.text-center.title Register
+                    if error
+                        .alert.alert-warning.alert-dismissible.fade.show(role='alert')
+                            strong=error
+                        br
+                    if success
+                        .alert.alert-success.alert-dismissible.fade.show(role='alert')
+                            strong=success
+                        brs
+                    if !success
+                        label.sr-only(for='inputEmail') Name
+                        input#inputEmail.form-control.input-custom(type='text',name='name' placeholder='Full name', required='', autofocus='' value=values ? values.name : '')
+                        br
+                        label.sr-only(for='inputEmail') Email address
+                        input#inputEmail.form-control.input-custom(type='email',name='email' placeholder='Email address', required='', autofocus='' value=values? values.email : '')
+                        br
+                        label.sr-only(for='inputPassword') Password
+                        input#inputPassword.form-control.input-custom(type='password', name='password' placeholder='Password', required='' value=values? values.password : '')
+                        br
+                        label.sr-only(for='inputAvatar') Avatar
+                        input#inputAvatar.form-control.input-custom(type='file', name='avatar' value= values? values.avatar : '')
+                        br
+                        
+                        button.btn.btn-lg.btn-tranfarent.center.btn-block(type='submit') Submit
+                    a.mt-2.center(href='/auth/login' role='button') Login Now!
+                    p.mt-5.mb-3.text-muted.text-center Coppy right @hvt

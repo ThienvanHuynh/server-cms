@@ -6,7 +6,7 @@ html
     body
         .images-cover-login
             form.form-custom.center(method="POST", href="/auth/login")
-                .form-signin1
+                .form-signin
                     h1.h3.mb-3.font-weight-normal.text-center.title Login
                     if errors
                         each error in errors
@@ -22,8 +22,8 @@ html
                         label
                         input(type='checkbox', value='remember-me')
                         |  Remember me
-                    button.btn.btn-lg.btn-primary.btn-block(type='submit') Login
+                    button.btn.btn-lg.btn-tranfarent.center.btn-block(type='submit') Login
                     p.mt-3.text-center Don't have an account? 
-                        a(href='auth/register') Sign up
-                    a.btn.btn-lg.btn-block(href='/' role='button') Home
+                        a(href='/auth/register') Sign up
+                    a.center(href='/' role='button') Home
                     p.mt-5.mb-3.text-muted.text-center Coppy right @hvt
