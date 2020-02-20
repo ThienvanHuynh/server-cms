@@ -90,3 +90,18 @@ module.exports.detail = (req, res, next) => {
     next(err);
   }
 };
+
+module.exports.deleteUser = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    console.log("--------->", id);
+    await User.findByIdAndDelete({ _id: id });
+    User.find().then(function(users) {
+      res.render("user/index", {
+        users: users
+      });
+    });
+  } catch (err) {
+    next(err);
+  }
+};

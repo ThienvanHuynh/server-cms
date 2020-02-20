@@ -29,5 +29,6 @@ router
   .delete(function(req, res, next) {
     next(new Error("not implemented"));
   });
+router.get("/delete/:id", controller.deleteUser);
 
 module.exports = router;
