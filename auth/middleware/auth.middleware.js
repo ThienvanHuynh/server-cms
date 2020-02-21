@@ -1,18 +1,16 @@
-var db = require("../../src/db");
-
+var Accounts = require("../model/auth.model");
 module.exports.requireAuth = function(req, res, next) {
   if (!req.signedCookies.userid) {
     res.redirect("/auth/login");
     return;
   }
-  // var user = db
-  //   .get("accounts")
-  //   .find({ id: req.signedCookies.userid })
-  //   .value();
-  // if (!user) {
-  //   res.redirect("/auth/login");
-  //   return;
-  // }
-  // res.locals.user = user;
+  const data = Accounts.findOne({ _id: req.signedCookies.userid });
+  data.exec(function(err, user) {
+    if (!user) {
+      res.redirect("/auth/login");
+      return;
+    }
+    res.locals.user = user;
+  });
   next();
 };

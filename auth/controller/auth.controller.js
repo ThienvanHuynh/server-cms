@@ -71,3 +71,9 @@ module.exports.postRegister = (req, res) => {
     next(error);
   }
 };
+
+module.exports.logout = (req, res, next) => {
+  console.log("logout");
+  res.clearCookie("userid");
+  res.redirect("/");
+};

@@ -9,4 +9,5 @@ router.get("/login", controller.login);
 router.post("/login", controller.postLogin);
 router.get("/register", controller.register);
 router.post("/register", upload.single("avatar"), controller.postRegister);
+router.get("/logout", controller.logout);
 module.exports = router;

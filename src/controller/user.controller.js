@@ -19,6 +19,10 @@ module.exports.user = (req, res) => {
     res.render("user/index", {
       users: users
     });
+    // res.status(200).json({
+    //   code: 200,
+    //   data: users
+    // });
   });
 };
 
