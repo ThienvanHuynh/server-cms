@@ -3,15 +3,29 @@ const shortid = require("shortid");
 
 module.exports.search = (req, res) => {
   const value = req.query.name;
-  const result = db
-    .get("users")
-    .value()
-    .filter(item => {
-      return item.name.indexOf(value) !== -1;
+  try {
+    const data = User.find();
+    data.exec(function(err, user) {
+      var result = [];
+      console.log("---->", user);
+      if (!user) {
+        alert("No data!");
+        return;
+      } else {
+        user.filter(item => {
+          if (item.name.indexOf(value) !== -1) {
+            result.push(item);
+          }
+          return result;
+        });
+        res.render("user/index", {
+          users: result
+        });
+      }
     });
-  res.render("users", {
-    users: result
-  });
+  } catch (err) {
+    next(err);
+  }
 };
 
 module.exports.user = (req, res) => {
@@ -19,10 +33,6 @@ module.exports.user = (req, res) => {
     res.render("user/index", {
       users: users
     });
-    // res.status(200).json({
-    //   code: 200,
-    //   data: users
-    // });
   });
 };
 

@@ -31,6 +31,10 @@
   background-color: rgba(149, 124, 124, 0.5);
   color: white;
 }
+.btn-default {
+  height: 40px;
+  width: 80px;
+}
 /*---------------------end- css-common--------------------*/
 
 /*-----login form-------*/
