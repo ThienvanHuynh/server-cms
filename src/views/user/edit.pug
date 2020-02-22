@@ -1,7 +1,7 @@
 extends ./header.pug
 block content
     h1 Edit
-    .container
+    .container.pt-max
         form.center(action=`/users/view/edit/${user.id}`, method="POST")
             .form-create
                 .form-group

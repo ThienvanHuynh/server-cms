@@ -1,9 +1,9 @@
 extends ./header.pug
 block content
-    h1 Create
-    .container
-        form.center(action="/users/create", method="POST")
-            .form-create
+    .container.pt-max
+        form.center.mt-3(action="/users/create", method="POST")     
+            .form-create.form-border
+                h1 Create
                 .form-group
                     label(for='name') Name
                     input#name.form-control(type='text' aria-describedby='emailHelp' placeholder='Enter name' name="name")

@@ -9,9 +9,12 @@
 }
 
 /*---------------------css- common--------------------*/
+.pt-max {
+  padding-top: 100px;
+}
 .input-custom {
   background: transparent;
-  border: 1px solid #ff9933;
+  border: 1px solid white;
 }
 .title {
   color: white;
@@ -25,7 +28,7 @@
 .btn-tranfarent {
   background: transparent;
   border: 1px solid black;
-  color: #ff9933;
+  color: white;
 }
 .btn-tranfarent:hover {
   background-color: rgba(149, 124, 124, 0.5);
@@ -34,6 +37,10 @@
 .btn-default {
   height: 40px;
   width: 80px;
+}
+.form-border {
+  border: 1px solid black;
+  padding: 15px;
 }
 /*---------------------end- css-common--------------------*/
 
@@ -52,13 +59,14 @@
 }
 
 .input-custom::placeholder {
-  color: #ff9933;
+  color: black;
 }
 .input-custom:focus {
   background: transparent;
   color: #ff9933;
-  border: 1px solid #cc0066;
+  border: 1px solid black;
   outline: none;
+  box-shadow: none;
 }
 
 .form-signin {
@@ -66,10 +74,11 @@
   max-width: 330px;
   padding: 15px;
   margin: auto;
-  border: 1px solid #ffff00;
+  border: 2px solid black;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .form-signin .title {
-  color: #ff9933;
+  color: white;
 }
 .form-signin p {
   color: white;
@@ -111,7 +120,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 56px);
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -120,7 +129,7 @@
 
 .register {
   background-color: transparent;
-  border: 1px solid black;
+  border: 1px solid white;
   width: 150px;
   height: 50px;
   color: white;
@@ -140,3 +149,10 @@
   min-width: 375px;
 }
 /*---------------end-create-form-data--------*/
+.custom-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: transparent;
+}
