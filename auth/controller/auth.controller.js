@@ -9,7 +9,7 @@ module.exports.postLogin = (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
   var data = Accounts.findOne({ email: email });
-  data.exec(function(err, user) {
+  data.exec(function (err, user) {
     if (!user) {
       res.render("auth/login", {
         errors: ["User does not exits"],
@@ -39,18 +39,18 @@ module.exports.register = (req, res) => {
 module.exports.postRegister = (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  var url = req.file.path;
-  req.body.id = shortid.generate();
-  req.body.avatar =
-    "/" +
-    url
-      .split("\\")
-      .slice(1)
-      .join("/");
+  // var url = req.file.path;
+  // req.body.id = shortid.generate();
+  // req.body.avatar =
+  //   "/" +
+  //   url
+  //     .split("\\")
+  //     .slice(1)
+  //     .join("/");
 
   try {
     const newAccount = new Accounts(req.body);
-    Accounts.find({ email: email }).exec(function(err, docs) {
+    Accounts.find({ email: email }).exec(function (err, docs) {
       if (docs.length > 0) {
         res.render("auth/register", {
           error: "Email đăng kí đã tồn tại",
@@ -58,7 +58,7 @@ module.exports.postRegister = (req, res) => {
         });
         return;
       } else {
-        newAccount.save(function(err) {
+        newAccount.save(function (err) {
           if (err) return handleError(err);
           res.render("auth/register", {
             success: "Đăng kí thành công!",
