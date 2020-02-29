@@ -10,7 +10,10 @@ html
                     h1.h3.mb-3.font-weight-normal.text-center.title Register
                     if error
                         .alert.alert-warning.alert-dismissible.fade.show(role='alert')
-                            strong=error
+                            strong Errors!
+                            |  #{error}
+                            button.close(type='button' data-dismiss='alert' aria-label='Close')
+                                span(aria-hidden='true') &times;
                         br
                     if success
                         .alert.alert-success.alert-dismissible.fade.show(role='alert')
@@ -33,3 +36,7 @@ html
                         button.btn.btn-lg.btn-tranfarent.center.btn-block(type='submit') Submit
                     a.mt-2.center(href='/auth/login' role='button') Login Now!
                     p.mt-5.mb-3.text-muted.text-center Coppy right @hvt
+        script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+

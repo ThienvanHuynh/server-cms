@@ -39,14 +39,14 @@ module.exports.register = (req, res) => {
 module.exports.postRegister = (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  var url = req.file.path;
+  // var url = req.file.path;
   req.body.id = shortid.generate();
-  req.body.avatar =
-    "/" +
-    url
-      .split("\\")
-      .slice(1)
-      .join("/");
+  // req.body.avatar =
+  //   "/" +
+  //   url
+  //     .split("\\")
+  //     .slice(1)
+  //     .join("/");
 
   try {
     const newAccount = new Accounts(req.body);
