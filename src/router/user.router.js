@@ -3,6 +3,7 @@ var router = express.Router();
 var authMiddleware = require("../../auth/middleware/auth.middleware");
 var controller = require("../controller/user.controller");
 
+console.log("user router");
 router.get("/", authMiddleware.requireAuth, controller.user);
 //func search user
 router.get("/search", controller.search);
@@ -19,14 +20,14 @@ router.get("/view/detail/:id", controller.detail);
 
 router
   .route("/view/edit/:id")
-  .all(function(req, res, next) {
+  .all(function (req, res, next) {
     // runs for all HTTP verbs first
     // think of it as route specific middleware!
     next();
   })
   .get(controller.GETeditUser)
   .post(controller.PUTeditUser)
-  .delete(function(req, res, next) {
+  .delete(function (req, res, next) {
     next(new Error("not implemented"));
   });
 router.get("/delete/:id", controller.deleteUser);

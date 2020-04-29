@@ -5,21 +5,21 @@ module.exports.search = (req, res) => {
   const value = req.query.name;
   try {
     const data = User.find();
-    data.exec(function(err, user) {
+    data.exec(function (err, user) {
       var result = [];
       console.log("---->", user);
       if (!user) {
         alert("No data!");
         return;
       } else {
-        user.filter(item => {
+        user.filter((item) => {
           if (item.name.indexOf(value) !== -1) {
             result.push(item);
           }
           return result;
         });
         res.render("user/index", {
-          users: result
+          users: result,
         });
       }
     });
@@ -29,9 +29,9 @@ module.exports.search = (req, res) => {
 };
 
 module.exports.user = (req, res) => {
-  User.find().then(function(users) {
+  User.find().then(function (users) {
     res.render("user/index", {
-      users: users
+      users: users,
     });
   });
 };
@@ -41,7 +41,7 @@ module.exports.create = (req, res, next) => {
   req.body.id = shortid.generate();
   try {
     const newUser = new User(req.body);
-    newUser.save(function(err) {
+    newUser.save(function (err) {
       if (err) {
         alert("Create user failed!");
       }
@@ -56,17 +56,16 @@ module.exports.getCreate = (req, res) => {
 };
 
 module.exports.GETeditUser = (req, res, next) => {
-  console.log("----------->");
   const id = req.params.id;
   try {
     const data = User.findOne({ _id: id });
-    data.exec(function(err, user) {
+    data.exec(function (err, user) {
       if (!user) {
         alert("user not exis");
         return;
       } else {
         res.render("user/edit", {
-          user: user
+          user: user,
         });
       }
     });
@@ -90,13 +89,13 @@ module.exports.detail = (req, res, next) => {
   const id = req.params.id;
   try {
     const data = User.findOne({ _id: id });
-    data.exec(function(err, user) {
+    data.exec(function (err, user) {
       if (!user) {
         alert("user not exis");
         return;
       } else {
         res.render("user/detail", {
-          user: user
+          user: user,
         });
       }
     });
@@ -110,9 +109,9 @@ module.exports.deleteUser = async (req, res, next) => {
   try {
     console.log("--------->", id);
     await User.findByIdAndDelete({ _id: id });
-    User.find().then(function(users) {
+    User.find().then(function (users) {
       res.render("user/index", {
-        users: users
+        users: users,
       });
     });
   } catch (err) {

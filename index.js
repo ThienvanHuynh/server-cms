@@ -7,11 +7,13 @@ const express = require("express");
 const app = express();
 var Userrouter = require("./src/router/user.router");
 var authrouter = require("./auth/router/auth.router");
-const port = process.env.PORT || 3880;
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
 var path = require("path");
 
+const { secretOrKey } = require("./key");
+const port = process.env.PORT || 3880;
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -26,15 +28,14 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 
-app.get("/", (req, res) => res.render("index"));
+app.get("/", (req, res) => {
+  console.log("errr");
+  return res.render("index");
+});
 app.use("/users", Userrouter);
 app.use("/auth", authrouter);
-
-// Catch 404 Errors and forward them to error handler
-// app.use((req, res, next) => {
-//   const err = new Error("Not Found");
-//   err.status = 404;
-//   next(err);
-// });
-
+/** Default route */
+app.all("/*", (req, res) => {
+  res.send("Have a good day!");
+});
 app.listen(port, () => console.log(`Express-Mongo ${port}`));

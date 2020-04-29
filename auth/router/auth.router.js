@@ -2,7 +2,7 @@ var express = require("express");
 var multer = require("multer");
 var controller = require("../controller/auth.controller");
 var router = express.Router();
-
+console.log("auth router");
 var upload = multer({ dest: "./public/uploads/" });
 
 router.get("/login", controller.login);
